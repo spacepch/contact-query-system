@@ -47,9 +47,9 @@ app.get('/contacts', async (_, res) => {
 });
 
 // 插入新的记录
-app.post('/insert', async (req, res) => {
+app.get('/insert', async (req, res) => {
     console.log("收到请求");
-    const { phone_number, name, address } = req.body;
+    const { phone_number, name, address } = req.query;
     let hashTable = new HashTable(100);
     if (fs.existsSync(contactsPath)) { //　如果数据文件存在，则加载内容
         hashTable = await load_contacts();
